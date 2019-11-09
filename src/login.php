@@ -29,7 +29,7 @@
                         <option value="grp5">Grupo 5</option>
                         <option value="grp6">Grupo 6</option>
                     </select>
-                    <input minlength="3" maxlength="20" type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Contraseña" name="contra">
+                    <input minlength="3" maxlength="20" type="password" id="contraGrupo" class="form-control mb-4" placeholder="Contraseña" name="contra">
 
                     <button class="btn btn-primary btn-block my-4" name="iniciar" type="submit">Jugar</button>
 
