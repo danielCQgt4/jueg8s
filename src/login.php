@@ -12,31 +12,43 @@
 
 <body>
     <?php
+    include './Models/sessionUser.php';
+    $session = new Session();
+    $data = $_POST;
 
-    ?>
-    <div id="log-1" class="login">
-        <div class="container" id="conte-1">
-            <div class="form-group">
-                <form method="POST" action="/" class="text-center p-5 m-4">
-                    <div class="logo-login"></div>
-                    <br>
-                    <p class="h4 mb-4">Juega ahora</p>
-                    <select name="idGrupo" id="idGrupo" class="form-control mb-4">
-                        <option value="grp1">Grupo 1</option>
-                        <option value="grp2">Grupo 2</option>
-                        <option value="grp3">Grupo 3</option>
-                        <option value="grp4">Grupo 4</option>
-                        <option value="grp5">Grupo 5</option>
-                        <option value="grp6">Grupo 6</option>
-                    </select>
-                    <input minlength="3" maxlength="20" type="password" id="contraGrupo" class="form-control mb-4" placeholder="Contraseña" name="contra">
+    if (isset($data['iniciar'])) {
+        $session->setUser($data['pass'], $data['idGroup']);
+        function accept(){
+            
+        }
+    } else {
+        ?>
+        <div id="log-1" class="login">
+            <div class="container" id="conte-1">
+                <div class="form-group">
+                    <form method="POST" action="/" class="text-center p-5 m-4">
+                        <div class="logo-login"></div>
+                        <br>
+                        <p class="h4 mb-4">Juega ahora</p>
+                        <select name="idGroup" id="idGrupo" class="form-control mb-4">
+                            <option value="grp1">Grupo 1</option>
+                            <option value="grp2">Grupo 2</option>
+                            <option value="grp3">Grupo 3</option>
+                            <option value="grp4">Grupo 4</option>
+                            <option value="grp5">Grupo 5</option>
+                            <option value="grp6">Grupo 6</option>
+                        </select>
+                        <input minlength="3" maxlength="20" type="password" id="contraGrupo" class="form-control mb-4" placeholder="Contraseña" name="pass">
 
-                    <button class="btn btn-primary btn-block my-4" name="iniciar" type="submit">Jugar</button>
+                        <button class="btn btn-primary btn-block my-4" name="start" type="submit">Jugar</button>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    <?php
+    }
+    ?>
 </body>
 
 
