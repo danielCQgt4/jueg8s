@@ -21,14 +21,11 @@ class Conection
     public function createConnection()
     {
         try {
-            $this->conn = new PDO('mysql:host=localhost;dbname=test', $this->usu, $this->pass);
+            $this->conn = new PDO('mysql:host=localhost;dbname=jueg8s', $this->usu, $this->pass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            if ($this->conn != null) {
-                echo 'Estamos bien';
-            }
             return $this->conn;
         } catch (PDOException $exc) {
-            echo 'Estamos mal ---' . $exc;
+            echo 'Fail' . $exc;
             return null;
         }
     }
