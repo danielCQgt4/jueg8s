@@ -48,7 +48,7 @@
                     </select>
                     <input minlength="3" maxlength="20" type="password" id="contraGrupo" class="form-control mb-4" placeholder="Contraseña" name="pass">
 
-                    <button class="btn btn-primary btn-block my-4" name="start" type="submit">Jugar</button>
+                    <button onclick="alert()" class="btn btn-primary btn-block my-4" name="start" type="submit">Jugar</button>
 
                 </form>
             </div>

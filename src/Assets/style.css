@@ -1,5 +1,9 @@
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*Login*/
+* {
+  font-family: serif;
+}
+
 html,
 body {
   height: 100%;
@@ -117,4 +121,34 @@ img {
   background-color: #ff7171;
   /*border: 0.5px solid #ff2323;*/
   color: red;
+}
+
+/* /////////////////////// Lista /////////////////////// */
+.list-box {
+  margin: 8em auto;
+  padding: 5em;
+  background-color: #22222277;
+  border-radius: 5px;
+}
+
+.list-title {
+  color: #fff;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.list-field {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  width: 25px;
+  text-align: center;
+}
+
+.lidt-table {
+  margin: 0 auto;
+}
+
+.list-row {
 }
