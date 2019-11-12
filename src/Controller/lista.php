@@ -43,11 +43,11 @@ try {
     $porcentaje = (evaluate() / $data['max']) * 100;
     $values = $session->getUser() . ",1," . getPosition(1) . ",CURTIME()," . $porcentaje;
     $sql = "insert into Grupo-Actividad values ($values)";
-    $stmt = $this->connection->getConexion()->prepare($sql);
+    $stmt = $connection->getConexion()->prepare($sql);
     if ($stmt->execute()) {
-        $this->session->setError("");
+        $session->setError("");
     }
 } catch (PDOException $ex) {
-    $this->session->setError("No se pudo evaluar la lista");
+    $session->setError("No se pudo evaluar la lista");
 }
 include './Jueg8s/src/Views/index.php';

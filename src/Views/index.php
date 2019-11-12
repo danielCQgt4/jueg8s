@@ -1,13 +1,18 @@
 <?php
 function getLevel()
 {
-    global $connection, $session;
-    $sql = "select count(*) as level from Grupo-Actividad where idGrupo = " . $session->getUser();
-    $stmt = $connection->getConexion()->prepare($sql);
-    $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    if ($row = $stmt->fetch()) {
-        return $row['level'];
+    try {
+        global $connection, $session;
+        $sql = "select count(*) as level from GrupoActividad where idGrupo = " . $session->getUser();
+        $stmt = $connection->getConexion()->prepare($sql);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        if ($row = $stmt->fetch()) {
+            return $row['level'];
+        }
+    } catch (PDoPDOException $ex) {
+        echo $ex;
+        return 0;
     }
 }
 
@@ -23,7 +28,7 @@ $level = getLevel();
 if ($level == 0) {
     include './Jueg8s/src/Views/lista.php';
 } else if ($level == 1) {
-    include './Jueg8s/src/Views/lista.php';
+    include './Jueg8s/src/Views/cronograma.php';
 } else {
-    include './Jueg8s/src/Views/lista.php';
+    include './Jueg8s/src/Views/gracias.html';
 }

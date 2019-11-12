@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="list-box" method="POST" action="/index.php">
+    <form class="list-box" id="list-form" method="POST" action="/index.php">
         <!-- Success message -->
         <?php if (!empty($_SESSION['success'])) { ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -14,7 +14,7 @@
         <!-- Error message -->
         <?php if (!empty($_SESSION['error'])) { ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong><?php echo $session->getError(); ?></strong>
+                <strong id="error-msg"><?php echo $session->getError(); ?></strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -23,7 +23,6 @@
                     $session->setError("");
                     ?>
         <h2 class="list-title mb-5">Completa la informacion</h2>
-        <p class="text-white">Completa la informacion comenzado por 1 sin saltarte ningun numero</p>
         <div class="list-play">
             <table class="lidt-table" border="0">
                 <?php
@@ -36,7 +35,7 @@
                     ?>
                     <tr class="list-row">
                         <td>
-                            <input type="text" name="<?php echo 'field' . $temp; ?>" class="list-field" maxlength="1">
+                            <input type="text" id="<?php echo 'field' . $temp; ?>" name="<?php echo 'field' . $temp; ?>" class="list-field" maxlength="1">
                         </td>
                         <td><?php echo $row['valor']; ?></td>
                         <input type="hidden" value="<?php echo $row['valor']; ?>" name="<?php echo 'text' . $temp; ?>">
@@ -46,9 +45,11 @@
                 } ?>
             </table>
         </div>
-        <input type="hidden" name="max" value="<?php echo $temp; ?>">
-        <div class="form-group">
-            <input type="submit" onclick="alert()" name="evaluate-list" value="Terminar" class="btn btn-success w-100 mt-5">
-        </div>
+        <input type="hidden" id="max" name="max" value="<?php echo $temp; ?>">
+        <input type="hidden" name="evaluate-list">
     </form>
+    <div class="form-group">
+        <input type="submit" id="sendLista" name="evaluate-list" value="Terminar" class="btn btn-success w-50 mx-auto d-block">
+    </div>
 </div>
+<script src="/Jueg8s/src/Assets/ejecution.js"></script>
