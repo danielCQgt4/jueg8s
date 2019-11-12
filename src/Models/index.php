@@ -1,6 +1,6 @@
 <?php
 
-include './sessionUser.php';
+include './Jueg8s/sessionUser.php';
 
 $session = new Session();
 

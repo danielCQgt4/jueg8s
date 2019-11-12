@@ -1,27 +1,34 @@
 <?php
+
+$con = new Conection();
+
+$con->createConnection();
+
 class Conection
 {
 
-    private $usu = 'jueg8s';
-    private $pass = 'jueg8sPass';
+    private $usu;
+    private $pass;
     private $conn;
 
     function Conection()
     {
         $this->conn = null;
-        $this->pass = "";
-        $this->usu = "";
+        $this->pass = 'jueg8sPass';
+        $this->usu = 'jueg8s';
     }
 
-    private function createConnection()
+    public function createConnection()
     {
         try {
-            $this->conn = new PDO('mysql:host=localhost;dbname=dbname', 'username', 'password');
-            $this->conn = new PDO("oci:dbname=localhost/orcl.us-central1-a.c.cycwebservice.internal", $this->usu, $this->pass);
+            $this->conn = new PDO('mysql:host=localhost;dbname=test', $this->usu, $this->pass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //$this->conn = oci_connect($this->usu, $this->pass,'localhost/orcl');
+            if ($this->conn != null) {
+                echo 'Estamos bien';
+            }
             return $this->conn;
         } catch (PDOException $exc) {
+            echo 'Estamos mal ---' . $exc;
             return null;
         }
     }

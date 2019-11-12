@@ -12,15 +12,14 @@
 
 <body>
     <?php
-    include './Models/sessionUser.php';
+    include './Jueg8s/src/Models/sessionUser.php';
     $session = new Session();
     $data = $_POST;
 
     if (isset($data['iniciar'])) {
         $session->setUser($data['pass'], $data['idGroup']);
-        function accept(){
-            
-        }
+        function accept()
+        { }
     } else {
         ?>
         <div id="log-1" class="login">
