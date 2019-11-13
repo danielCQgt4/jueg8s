@@ -11,15 +11,13 @@
     function evaluateList() {
         var max = $('#max').val();
         var encontrado;
-        for (i = 0; i <= max; i++) {
+        for (i = 0; i < max; i++) {
             encontrado = false;
-            for (j = 0; j <= max; j++) {
-                if ($('#field' + i).val() == j) {
+            for (j = 0; j < max; j++) {
+                if ($('#field' + i).val() == j + 1) {
                     encontrado = true;
-                    alert(j + ' fue encontrado');
                     j = parseInt(max) + 1;
                 }
-                alert(j);
             }
             if (!encontrado) {
                 return false;
@@ -28,6 +26,4 @@
         return true;
     }
 
-    function evaluateCheck(max, number) {
-    }
 })();
