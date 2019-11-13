@@ -1,9 +1,5 @@
 <?php
 
-$con = new Conection();
-
-$con->createConnection();
-
 class Conection
 {
 

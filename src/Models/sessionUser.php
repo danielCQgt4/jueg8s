@@ -2,7 +2,7 @@
 
 class Session
 {
-    private $host = 'localhost';
+    private $host = '192.168.100.8';
 
     function Session()
     {

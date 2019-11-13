@@ -8,9 +8,9 @@ html,
 body {
   height: 100%;
   color: white;
-  background: #0b486b;
-  background: -webkit-linear-gradient(to right, #f56217, #0b486b);
-  background: linear-gradient(to right, #f56217, #0b486b);
+  background: #780206;
+  background: -webkit-linear-gradient(to right, #061161, #780206);
+  background: linear-gradient(to right, #061161, #780206);
 }
 
 img {
@@ -157,4 +157,26 @@ img {
 }
 
 .list-row {
+}
+
+/* /////////////////////// Crucigrama /////////////////////// */
+.cru-field {
+  width: 51px;
+  height: 51px;
+}
+
+.cru-number {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.cru-table {
+  display: block;
+  width: max-content;
+}
+
+.cru-list {
+  display: inline;
 }
