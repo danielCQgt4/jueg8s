@@ -4,6 +4,10 @@ include '../external.html';
 include '../Controller/connection.php';
 $session = new Session();
 $connection = new Conection();
+
+if (empty($_SESSION['user']) || empty($_SESSION['pass'])) {
+    header('Location: http://' . $session->getHost() . '/');
+}
 ?>
 <!-- Diseno -->
 <nav class="navbar navbar-light bg-dark">

@@ -26,7 +26,6 @@ if ($admin) {
     }
 
     createCrucigrama();
-
     header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/admin.php');
 } else {
     header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
