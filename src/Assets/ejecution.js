@@ -1,5 +1,7 @@
 (function () {
 
+    var arreglo = [];
+
     $('#sendLista').click(function () {
         if (evaluateList()) {
             $('#list-form').submit();
@@ -10,16 +12,19 @@
 
     function evaluateList() {
         var max = $('#max').val();
-        var encontrado;
         for (i = 0; i < max; i++) {
-            encontrado = false;
-            for (j = 0; j < max; j++) {
-                if ($('#field' + i).val() == j + 1) {
-                    encontrado = true;
-                    j = parseInt(max) + 1;
-                }
+            if (validate($('#field' + i).val(), max)) {
+                arreglo.push($('#field' + i).val());
+            } else {
+                return false;
             }
-            if (!encontrado) {
+        }
+        return true;
+    }
+
+    function validate(number, max) {
+        for (i = 0; i < arreglo.length; i++) {
+            if (arreglo[i] == number || number > max) {
                 return false;
             }
         }

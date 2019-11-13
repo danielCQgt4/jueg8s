@@ -26,7 +26,7 @@ function getPosition($activitie)
 {
     try {
         global $connection, $session;
-        $sql = "select max(posicion)+1 as pos from Grupo-Actividad where idActividad = $activitie and idGrupo = " . $session->getUser();
+        $sql = "select max(posicion)+1 as pos from GrupoActividad where idActividad = $activitie";
         $stmt = $connection->getConexion()->prepare($sql);
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -34,20 +34,21 @@ function getPosition($activitie)
             return $row['pos'];
         }
     } catch (PDOException $ex) {
-        return 'abc';
+        return 1;
     }
+    return 1;
 }
-
 
 try {
     $porcentaje = (evaluate() / $data['max']) * 100;
+    $temp = getPosition(1);
     $values = $session->getUser() . ",1," . getPosition(1) . ",CURTIME()," . $porcentaje;
-    $sql = "insert into Grupo-Actividad values ($values)";
+    $sql = "insert into GrupoActividad values ($values)";
     $stmt = $connection->getConexion()->prepare($sql);
     if ($stmt->execute()) {
         $session->setError("");
     }
 } catch (PDOException $ex) {
-    $session->setError("No se pudo evaluar la lista");
+    $session->setError("No se pudo evaluar la lista - " . $sql . " /n" . $temp);
 }
 include './Jueg8s/src/Views/index.php';

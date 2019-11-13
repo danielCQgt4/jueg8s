@@ -28,7 +28,7 @@ $level = getLevel();
 if ($level == 0) {
     include './Jueg8s/src/Views/lista.php';
 } else if ($level == 1) {
-    include './Jueg8s/src/Views/cronograma.php';
+    include './Jueg8s/src/Views/crucigrama.php';
 } else {
     include './Jueg8s/src/Views/gracias.html';
 }
