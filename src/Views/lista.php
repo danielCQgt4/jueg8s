@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="list-box" id="list-form" method="POST" action="/index.php">
+    <form class="list-box" id="list-form" method="POST" action="http://<?php echo $session->getHost(); ?>">
         <!-- Success message -->
         <?php if (!empty($_SESSION['success'])) { ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -52,4 +52,4 @@
         <input type="submit" id="sendLista" name="evaluate-list" value="Terminar" class="btn btn-success w-50 mx-auto d-block">
     </div>
 </div>
-<script src="/Jueg8s/src/Assets/ejecution.js"></script>
+<script src="http://<?php echo $session->getHost(); ?>/Jueg8s/src/Assets/ejecution.js"></script>

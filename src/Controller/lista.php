@@ -51,4 +51,5 @@ try {
 } catch (PDOException $ex) {
     $session->setError("No se pudo evaluar la lista - " . $sql . " /n" . $temp);
 }
-include './Jueg8s/src/Views/index.php';
+
+header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');

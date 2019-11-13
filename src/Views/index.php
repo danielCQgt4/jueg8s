@@ -1,8 +1,17 @@
 <?php
+include '../Models/sessionUser.php';
+include '../external.html';
+include '../Controller/connection.php';
+$session = new Session();
+$connection = new Conection();
+
 function getLevel()
 {
     try {
         global $connection, $session;
+        if ($session->getUser() == 5) {
+            return $session->getUser();
+        }
         $sql = "select count(*) as level from GrupoActividad where idGrupo = " . $session->getUser();
         $stmt = $connection->getConexion()->prepare($sql);
         $stmt->execute();
@@ -11,7 +20,6 @@ function getLevel()
             return $row['level'];
         }
     } catch (PDoPDOException $ex) {
-        echo $ex;
         return 0;
     }
 }
@@ -26,9 +34,11 @@ $level = getLevel();
 </nav>
 <?php
 if ($level == 0) {
-    include './Jueg8s/src/Views/lista.php';
+    include './lista.php';
 } else if ($level == 1) {
-    include './Jueg8s/src/Views/crucigrama.php';
+    include './crucigrama.php';
+} else if ($level == 5) {
+    include './admin.php';
 } else {
-    include './Jueg8s/src/Views/gracias.html';
+    include './gracias.html';
 }

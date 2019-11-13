@@ -8,6 +8,7 @@
         } else {
             alert('Corrige los campos');
         }
+        arreglo = [];
     });
 
     function evaluateList() {

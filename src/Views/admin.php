@@ -1,4 +1,17 @@
-<form action="/index.php" method="post" class="list-box">
+<?php
+include '../Models/sessionUser.php';
+include '../external.html';
+include '../Controller/connection.php';
+$session = new Session();
+$connection = new Conection();
+?>
+<!-- Diseno -->
+<nav class="navbar navbar-light bg-dark">
+    <span class="navbar-brand mb-0 h1 text-white">
+        <h1>Jueg8s</h1>
+    </span>
+</nav>
+<form action="http://<?php echo $session->getHost(); ?>" method="post" class="list-box">
     <!-- Success message -->
     <?php if (!empty($_SESSION['success'])) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -28,7 +41,7 @@
             ?>
             <tr>
                 <?php
-                    for ($j = 0; $j <= 13; $j++) {
+                    for ($j = 0; $j < 13; $j++) {
                         ?>
                     <td><input class="list-field2" value="" type="text" name="<?php echo "$i,$j" ?>" id="" maxlength="1"></td>
                 <?php
