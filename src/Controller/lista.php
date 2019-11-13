@@ -11,8 +11,8 @@ function evaluate()
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             if ($row = $stmt->fetch()) {
-                if ($row['valido'] == 0) {
-                    $porcentaje++;
+                if ($row['valido'] == 1) {
+                    $porcentaje += 1;
                 }
             }
         }
@@ -25,7 +25,7 @@ function evaluate()
 function getPosition($activitie)
 {
     try {
-        global $connection, $session;
+        global $connection;
         $sql = "select max(posicion)+1 as pos from GrupoActividad where idActividad = $activitie";
         $stmt = $connection->getConexion()->prepare($sql);
         $stmt->execute();
