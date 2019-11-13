@@ -1,5 +1,6 @@
 (function () {
 
+    //Lista
     var arreglo = [];
 
     $('#sendLista').click(function () {
@@ -31,5 +32,13 @@
         }
         return true;
     }
+
+    //Crucigrama
+    $('#sendCrucigrama').click(function () {
+        //Corroboraciones
+        if (confirm('Esta seguro que desea enviar la informacion')) {
+            $('#cru-form').submit();
+        }
+    });
 
 })();

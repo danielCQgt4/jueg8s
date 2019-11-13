@@ -15,7 +15,7 @@ function hide($content)
 
     <div class="container">
         <div class="list-box">
-            <form id="list-form" method="POST" action="http://<?php echo $session->getHost(); ?>/">
+            <form id="cru-form" method="POST" action="http://<?php echo $session->getHost(); ?>/">
                 <!-- Success message -->
                 <?php if (!empty($_SESSION['success'])) { ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -49,13 +49,13 @@ function hide($content)
                                 <?php
                                     for ($i = 1; $i <= 13; $i++) {
                                         if (hide($row[$i]) == 1) { ?>
-                                        <td><label class="cru-number text-white"><?php echo $row[$i]; ?></label><input class="d-none" value="*" type="text" name="<?php echo $row['idCrucugrama'] . ",$j"; ?>" id="" maxlength="1"></td>
+                                        <td><label class="cru-number text-white"><?php echo $row[$i]; ?></label><input class="d-none" value="*" type="text" name="<?php echo $row['idCrucigrama'] . ",$i"; ?>" id="" maxlength="1"></td>
                                     <?php
                                             } else if (hide($row[$i]) == -1) { ?>
-                                        <td><input class="d-none" value="*" type="text" name="<?php echo $row['idCrucugrama'] . ",$j"; ?>" id="" maxlength="1"></td>
+                                        <td><input class="d-none" value="*" type="text" name="<?php echo $row['idCrucigrama'] . ",$i"; ?>" id="" maxlength="1"></td>
                                     <?php
                                             } else { ?>
-                                        <td><input class="list-field2" type="text" name="<?php echo $row['idCrucugrama'] . ",$j"; ?>" id="" maxlength="1"></td>
+                                        <td><input class="list-field2" type="text" name="<?php echo $row['idCrucigrama'] . ",$i"; ?>" id="" maxlength="1"></td>
                                 <?php }
                                     } ?>
                             </tr>
@@ -64,7 +64,7 @@ function hide($content)
                     </table>
                 </div>
                 <input type="hidden" id="max" name="max" value="<?php echo $temp; ?>">
-                <input type="hidden" name="evaluate-list">
+                <input type="hidden" name="evaluate-crucigrama">
             </form>
             <div class="form-group">
                 <h3 class="text-white cru-list">1.</h3>Es un catálogo de elementos o tareas que se registran para un seguimiento.

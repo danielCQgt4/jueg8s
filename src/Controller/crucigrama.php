@@ -30,34 +30,116 @@ if ($admin) {
     header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/admin.php');
 } else {
 
+    function getArregloFromData($data)
+    {
+        try {
+            $tempArreglo = array();
+            $stringTemp = '';
+            for ($i = 0; $i < 15; $i++) {
+                $stringTemp = '';
+                for ($j = 1; $j <= 13; $j++) {
+                    if ($data["$i,$j"] != '*') {
+                        $stringTemp .= $data["$i,$j"];
+                    }
+                }
+                if (strlen($stringTemp) > 3) {
+                    echo $stringTemp . '<br>';
+                    $tempArreglo[] = $stringTemp;
+                }
+            }
+            for ($i = 1; $i <= 13; $i++) {
+                $stringTemp = '';
+                for ($j = 0; $j < 15; $j++) {
+                    if ($data["$j,$i"] != '*') {
+                        $stringTemp .= $data["$j,$i"];
+                    }
+                }
+                if (strlen($stringTemp) > 3) {
+                    echo $stringTemp . '<br>';
+                    $tempArreglo[] = $stringTemp;
+                }
+            }
+            return $tempArreglo;
+        } catch (PDOException $th) {
+            return null;
+        }
+    }
 
-    function getArregloFromDB()
+
+    function getDataFromDB()
     {
         global $connection;
-        $datosArreglo = array();
+        $tempArreglo = array();
         try {
-            $sql = "select * from Crucigrama";
+            $sql = "select * from CrucigramaPalabra";
             $stmt = $connection->getConexion()->prepare($sql);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while ($row = $stmt->fetch()) {
-                $tempArreglo = array();
-                for ($i = 1; $i <= 13; $i++) {
-                    $tempArreglo[] = $row[$i];
-                }
-                $datosArreglo[] = $tempArreglo;
+                $tempArreglo[] = $row['palabra'];
             }
-            return $datosArreglo;
+            return $tempArreglo;
         } catch (PDOException $ex) {
             return null;
         }
     }
 
-    function evaluarCrucigrama()
+    function compararData($dataArreglo, $dbArreglo)
     {
-        global $session, $data;
-        $datosArreglo = getArregloFromDB();
+        $porcentaje = 0;
+        $stringData = '';
+        $stringDB = '';
+        for ($i = count($dbArreglo) - 1; $i >= 0; $i--) {
+            $stringData = '';
+            for ($j = strlen($dbArreglo[$i]) - 1; $j >= 0; $j--) {
+                $stringData .= $dataArreglo[$i]{
+                    $j};
+                $stringDB .= $dbArreglo[$i]{
+                    $j};
+            }
+            if ($stringDB == $stringData) {
+                $porcentaje++;
+            }
+        }
+        return $porcentaje;
     }
 
-    header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+    function getPosition($activitie)
+    {
+        try {
+            global $connection;
+            $sql = "select max(posicion)+1 as pos from GrupoActividad where idActividad = $activitie";
+            $stmt = $connection->getConexion()->prepare($sql);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            if ($row = $stmt->fetch()) {
+                return $row['pos'];
+            }
+        } catch (PDOException $ex) {
+            return 1;
+        }
+        return 1;
+    }
+
+    function evaluarCrucigrama()
+    {
+        try {
+            global $session, $data, $connection;
+            $dbArreglo = getDataFromDB();
+            $viewArreglo = getArregloFromData($data);
+            $porcentaje = compararData($viewArreglo, $dbArreglo) / count($dbArreglo) * 100;
+            $temp = getPosition(1);
+            $values = $session->getUser() . ",2," . getPosition(2) . ",CURTIME()," . $porcentaje;
+            $sql = "insert into GrupoActividad values ($values)";
+            $stmt = $connection->getConexion()->prepare($sql);
+            if ($stmt->execute()) {
+                $session->setError("");
+            }
+        } catch (PDOException $ex) {
+            $session->setError("No se pudo evaluar la lista - " . $sql . "<br>" . $temp);
+        }
+    }
+
+    evaluarCrucigrama();
+    //header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
 }

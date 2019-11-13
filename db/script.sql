@@ -29,5 +29,18 @@ select * from GrupoActividad;
 -- Crucigrama
 desc Crucigrama;
 select * from Crucigrama;
-insert into Crucigrama values (0,'1','2','3','4','5','6','7','8','9','1','1','2','3',2);
+insert into CrucigramaPalabra value (1,'CHECKLIST',2),
+(2,'ELIMINAR',2),
+(3,'FLEXIBLE',2),
+(4,'SECUENCIA',2),
+(5,'VERSATIL',2);
+
+-- SQL crate database
+create table CrucigramaPalabra(
+	idCrucigramaPalabra int primary key,
+    palabra varchar(15),
+    idActividad int not null,
+    constraint idActividad_CrucigramaPalabra_fk foreign key(idActividad) references Actividad (idActividad)
+);
+
 
