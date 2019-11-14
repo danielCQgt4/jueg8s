@@ -30,19 +30,35 @@ function getLevel()
 
 $level = getLevel();
 ?>
-<!-- Diseno -->
-<nav class="navbar navbar-light bg-dark">
-    <span class="navbar-brand mb-0 h1 text-white">
-        <h1>Jueg8s</h1>
-    </span>
-</nav>
-<?php
-if ($level == 0) {
-    include './lista.php';
-} else if ($level == 1) {
-    include './crucigrama.php';
-} else if ($level == 5) {
-    include './admin.php';
-} else {
-    include './gracias.html';
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jueg8s</title>
+</head>
+
+<body>
+    <!-- Diseno -->
+    <nav class="navbar navbar-light bg-dark">
+        <span class="navbar-brand mb-0 h1 text-white">
+            <h1>Jueg8s</h1>
+        </span>
+    </nav>
+
+    <?php
+    if ($level == 0) {
+        include './lista.php';
+    } else if ($level == 1) {
+        include './crucigrama.php';
+    } else if ($level == 5) {
+        include './admin.php';
+    } else {
+        include './gracias.html';
+    } ?>
+
+</body>
+
+</html>

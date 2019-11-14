@@ -43,7 +43,6 @@ if ($admin) {
                     }
                 }
                 if (strlen($stringTemp) > 3) {
-                    echo $stringTemp . '<br>';
                     $tempArreglo[] = $stringTemp;
                 }
             }
@@ -55,7 +54,6 @@ if ($admin) {
                     }
                 }
                 if (strlen($stringTemp) > 3) {
-                    echo $stringTemp . '<br>';
                     $tempArreglo[] = $stringTemp;
                 }
             }
@@ -89,9 +87,12 @@ if ($admin) {
         $porcentaje = 0;
         $stringData = '';
         $stringDB = '';
+        $minSize = 0;
         for ($i = count($dbArreglo) - 1; $i >= 0; $i--) {
             $stringData = '';
-            for ($j = strlen($dbArreglo[$i]) - 1; $j >= 0; $j--) {
+            $stringDB = '';
+            $minSize = strlen($dbArreglo[$i]) > strlen($dataArreglo[$i]) ? strlen($dataArreglo[$i]) : strlen($dbArreglo[$i]);
+            for ($j = $minSize - 1; $j >= 0; $j--) {
                 $stringData .= $dataArreglo[$i]{
                     $j};
                 $stringDB .= $dbArreglo[$i]{
@@ -141,5 +142,5 @@ if ($admin) {
     }
 
     evaluarCrucigrama();
-    //header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+    header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
 }
