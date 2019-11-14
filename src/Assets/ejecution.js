@@ -41,6 +41,24 @@
         }
     });
 
+    //Deactivate
+    function getTerminate() {
+        var data;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                data = this.responseText;
+                console.log(window.location.href);
+                if (data == '{ "jugar":"1"}' && window.location.href == 'http://calidad.techmooncr.com/Jueg8s/src/Views/') {
+                    window.location.replace("http://calidad.techmooncr.com/Jueg8s/src/Views/resultados.php");
+                }
+            }
+        };
+        xmlhttp.open("GET", "http://calidad.techmooncr.com/Jueg8s/src/Controller/general.php?api=123", true);
+        xmlhttp.send();
+    }
+    setInterval(getTerminate, 2000);
+
     //Calificacion
     function getData() {
         var data;
@@ -48,17 +66,17 @@
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 data = this.responseText;
-                if (data == '{ "jugar":"1"}'){
+                if (data == '{ "jugar":"1"}') {
                     var temp = $('#thx-btn').html();
-                    if (temp == ''){
+                    if (temp == '') {
                         $('#thx-btn').html('<form action="../../../index.php" method="POST"><input type = "submit" name = "btn-evaluate" value = "Calificar" class= "btn btn-success w-50 d-block mx-auto" ></form > ');
                     }
-                }else{
+                } else {
                     $('#thx-btn').html('');
                 }
             }
         };
-        xmlhttp.open("GET", "http://localhost/Jueg8s/src/Controller/general.php?api=123", true);
+        xmlhttp.open("GET", "http://calidad.techmooncr.com/Jueg8s/src/Controller/general.php?api=123", true);
         xmlhttp.send();
     }
     setInterval(getData, 2000);

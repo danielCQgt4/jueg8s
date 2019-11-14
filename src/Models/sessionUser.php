@@ -2,7 +2,7 @@
 
 class Session
 {
-    private $host = 'localhost';
+    private $host = 'calidad.techmooncr.com';
 
     function Session()
     {

@@ -33,6 +33,22 @@ function onlyOne($user)
     }
 }
 
+function active()
+{
+    try {
+        global $connection;
+        $sql = "select jugar from jugar;";
+        $stmt = $connection->getConexion()->prepare($sql);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        if ($row = $stmt->fetch()) {
+            return $row['jugar'];
+        }
+    } catch (\Throwable $th) {
+        return false;
+    }
+}
+
 if (isset($_GET['api'])) {
     function getStatusCalificar()
     {

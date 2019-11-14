@@ -15,12 +15,12 @@ insert into Actividad values (2,'Crucigrama');
 
 -- Lista
 delete from Lista where idLista > 0;
-insert into Lista values (1,'Valor 1',3,1),
-(2,'Valor 2',2,1),
-(3,'Valor 3',6,1),
-(4,'Valor 4',4,1),
-(5,'Valor 5',5,1),
-(6,'Valor 6',1,1);
+insert into Lista values (1,'Completar al lista con los casos de prueba a evaluar',3,1),
+(2,'Marcar el resultado de la prueba despues de ejecutarla',4,1),
+(3,'Completar los datos de creador de lista',1,1),
+(4,'Completar apartado de resultados',6,1),
+(5,'Pasar la lista al personal de testeo',2,1),
+(6,'Devolver la lista al creado',5,1);
 
 -- GrupoActividad
 delete from GrupoActividad where idGrupo != 5 and idActividad >0;
@@ -32,6 +32,8 @@ select * from GrupoActividad;
 
 -- Crucigrama
 desc Crucigrama;
+update Crucigrama set `6`= 4 where idCrucigrama = 5;
+
 select * from Crucigrama;
 insert into CrucigramaPalabra value (1,'CHECKLIST',2),
 (2,'ELIMINAR',2),
@@ -40,6 +42,7 @@ insert into CrucigramaPalabra value (1,'CHECKLIST',2),
 (5,'VERSATIL',2);
 
 -- Calificar
+update jugar set jugar = true where jugar = false;
 insert into jugar values (false);
 
 -- SQL crate database
