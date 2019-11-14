@@ -43,7 +43,7 @@ if ($admin) {
                     }
                 }
                 if (strlen($stringTemp) > 3) {
-                    $tempArreglo[] = $stringTemp;
+                    $tempArreglo[] = strtoupper($stringTemp);
                 }
             }
             for ($i = 1; $i <= 13; $i++) {
@@ -54,11 +54,18 @@ if ($admin) {
                     }
                 }
                 if (strlen($stringTemp) > 3) {
-                    $tempArreglo[] = $stringTemp;
+                    $tempArreglo[] = strtoupper($stringTemp);
                 }
             }
+            $tempArreglo[] = '';
+            $tempArreglo[] = '';
+            $tempArreglo[] = '';
+            $tempArreglo[] = '';
+            $tempArreglo[] = '';
+            $tempArreglo[] = '';
             return $tempArreglo;
-        } catch (PDOException $th) {
+        } catch (Exception $th) {
+            echo $th;
             return null;
         }
     }
@@ -84,22 +91,28 @@ if ($admin) {
 
     function compararData($dataArreglo, $dbArreglo)
     {
+        $tempArreglo = array();
         $porcentaje = 0;
         $stringData = '';
         $stringDB = '';
         $minSize = 0;
         for ($i = count($dbArreglo) - 1; $i >= 0; $i--) {
-            $stringData = '';
-            $stringDB = '';
-            $minSize = strlen($dbArreglo[$i]) > strlen($dataArreglo[$i]) ? strlen($dataArreglo[$i]) : strlen($dbArreglo[$i]);
-            for ($j = $minSize - 1; $j >= 0; $j--) {
-                $stringData .= $dataArreglo[$i]{
-                    $j};
-                $stringDB .= $dbArreglo[$i]{
-                    $j};
-            }
-            if ($stringDB == $stringData) {
-                $porcentaje++;
+            for ($j = count($dataArreglo) - 1; $j >= 0; $j--) {
+                $stringData = '';
+                $stringDB = '';
+                $minSize = strlen($dbArreglo[$i]) > strlen($dataArreglo[$j]) ? strlen($dataArreglo[$j]) : strlen($dbArreglo[$i]);
+                for ($j = $minSize - 1; $j >= 0; $j--) {
+                    $stringData .= $dataArreglo[$i]{
+                        $j};
+                    $stringDB .= $dbArreglo[$i]{
+                        $j};
+                }
+                if ($stringDB == $stringData) {
+                    if (!in_array($stringData, $tempArreglo)) {
+                        $tempArreglo[] = $stringData;
+                        $porcentaje++;
+                    }
+                }
             }
         }
         return $porcentaje;
@@ -117,6 +130,7 @@ if ($admin) {
                 return $row['pos'];
             }
         } catch (PDOException $ex) {
+            echo $ex;
             return 1;
         }
         return 1;
@@ -128,8 +142,7 @@ if ($admin) {
             global $session, $data, $connection;
             $dbArreglo = getDataFromDB();
             $viewArreglo = getArregloFromData($data);
-            $porcentaje = compararData($viewArreglo, $dbArreglo) / count($dbArreglo) * 100;
-            $temp = getPosition(1);
+            $porcentaje = (compararData($viewArreglo, $dbArreglo) / count($dbArreglo)) * 100;
             $values = $session->getUser() . ",2," . getPosition(2) . ",CURTIME()," . $porcentaje;
             $sql = "insert into GrupoActividad values ($values)";
             $stmt = $connection->getConexion()->prepare($sql);
@@ -137,7 +150,7 @@ if ($admin) {
                 $session->setError("");
             }
         } catch (PDOException $ex) {
-            $session->setError("No se pudo evaluar la lista - " . $sql . "<br>" . $temp);
+            $session->setError("No se pudo evaluar la lista - " . $sql . "<br>");
         }
     }
 

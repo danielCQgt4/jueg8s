@@ -180,3 +180,8 @@ img {
 .cru-list {
   display: inline;
 }
+
+.box-color {
+  padding: 5em;
+  background-color: #22222277;
+}

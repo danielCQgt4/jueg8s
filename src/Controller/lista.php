@@ -18,6 +18,7 @@ function evaluate()
         }
         return $porcentaje;
     } catch (PDOException $ex) {
+        echo $ex;
         return -1;
     }
 }

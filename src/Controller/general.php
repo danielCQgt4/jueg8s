@@ -11,7 +11,6 @@ function accept($usu, $pass)
         if ($row = $stmt->fetch()) {
             return $row['valido'] == 1;
         }
-        return $session->getActive() == 'yes';
     } catch (\Throwable $th) {
         $session->setError('Error inesperado');
         return false;
