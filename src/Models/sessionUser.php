@@ -2,7 +2,7 @@
 
 class Session
 {
-    private $host = 'calidad.techmooncr.com';
+    private $host = 'cycwebservice.cf';
 
     function Session()
     {

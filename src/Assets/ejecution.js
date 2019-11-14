@@ -49,12 +49,12 @@
             if (this.readyState == 4 && this.status == 200) {
                 data = this.responseText;
                 console.log(window.location.href);
-                if (data == '{ "jugar":"1"}' && window.location.href == 'http://calidad.techmooncr.com/Jueg8s/src/Views/') {
-                    window.location.replace("http://calidad.techmooncr.com/Jueg8s/src/Views/resultados.php");
+                if (data == '{ "jugar":"1"}' && window.location.href == 'http://cycwebservice.cf/Jueg8s/src/Views/') {
+                    window.location.replace("http://cycwebservice.cf/Jueg8s/src/Views/resultados.php");
                 }
             }
         };
-        xmlhttp.open("GET", "http://calidad.techmooncr.com/Jueg8s/src/Controller/general.php?api=123", true);
+        xmlhttp.open("GET", "http://cycwebservice.cf/Jueg8s/src/Controller/general.php?api=123", true);
         xmlhttp.send();
     }
     setInterval(getTerminate, 2000);
@@ -76,7 +76,7 @@
                 }
             }
         };
-        xmlhttp.open("GET", "http://calidad.techmooncr.com/Jueg8s/src/Controller/general.php?api=123", true);
+        xmlhttp.open("GET", "http://cycwebservice.cf/Jueg8s/src/Controller/general.php?api=123", true);
         xmlhttp.send();
     }
     setInterval(getData, 2000);
