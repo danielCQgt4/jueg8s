@@ -39,7 +39,92 @@ insert into CrucigramaPalabra value (1,'CHECKLIST',2),
 (4,'SECUENCIA',2),
 (5,'VERSATIL',2);
 
+-- Calificar
+insert into jugar values (false);
+
 -- SQL crate database
+CREATE SCHEMA IF NOT EXISTS jueg8s DEFAULT CHARACTER SET utf8 ;
+USE jueg8s ;
+
+CREATE TABLE IF NOT EXISTS Grupo (
+  idGrupo INT NOT NULL,
+  contra VARCHAR(45) NULL,
+  activo TINYINT(1) NULL,
+  PRIMARY KEY (idGrupo));
+
+CREATE TABLE IF NOT EXISTS Actividad (
+  idActividad INT NOT NULL,
+  Nombre VARCHAR(45) NULL,
+  PRIMARY KEY (idActividad));
+
+CREATE TABLE IF NOT EXISTS GrupoActividad (
+  idGrupo INT NOT NULL,
+  idActividad INT NOT NULL,
+  posicion INT NULL,
+  fin TIME NULL,
+  porcentajeObtenido INT NULL,
+  PRIMARY KEY (idGrupo, idActividad),
+  CONSTRAINT fk_Grupo_Actividad_Grupo FOREIGN KEY (idGrupo) REFERENCES Grupo (idGrupo)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_Grupo_Actividad_Actividad1
+    FOREIGN KEY (idActividad)
+    REFERENCES Actividad (idActividad)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS Preguntas (
+  idPregunta INT NOT NULL,
+  pregunta VARCHAR(200) NULL,
+  aRes VARCHAR(100) NULL,
+  bRes VARCHAR(100) NULL,
+  cRes VARCHAR(100) NULL,
+  aValor TINYINT(1) NULL,
+  bValor TINYINT(1) NULL,
+  cValor TINYINT(1) NULL,
+  idActividad INT NOT NULL,
+  PRIMARY KEY (idPregunta),
+  CONSTRAINT fk_Preguntas_Actividad1
+    FOREIGN KEY (idActividad)
+    REFERENCES Actividad (idActividad)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS Lista (
+  idLista INT NOT NULL,
+  valor VARCHAR(100) NULL,
+  valorPos INT NULL,
+  idActividad INT NOT NULL,
+  PRIMARY KEY (idLista),
+  CONSTRAINT fk_Lista_Actividad1
+    FOREIGN KEY (idActividad)
+    REFERENCES Actividad (idActividad)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS Crucigrama (
+  idCrucigrama INT NOT NULL,
+  `1` VARCHAR(45) NULL,
+  `2` VARCHAR(45) NULL,
+  `3` VARCHAR(45) NULL,
+  `4` VARCHAR(45) NULL,
+  `5` VARCHAR(45) NULL,
+  `6` VARCHAR(45) NULL,
+  `7` VARCHAR(45) NULL,
+  `8` VARCHAR(45) NULL,
+  `9` VARCHAR(45) NULL,
+  `10` VARCHAR(45) NULL,
+  `11` VARCHAR(45) NULL,
+  `12` VARCHAR(45) NULL,
+  `13` VARCHAR(45) NULL,
+  idActividad INT NOT NULL,
+  PRIMARY KEY (idCrucigrama),
+  CONSTRAINT fk_Crucigrama_Actividad1
+    FOREIGN KEY (idActividad)
+    REFERENCES Actividad (idActividad)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
 create table CrucigramaPalabra(
 	idCrucigramaPalabra int primary key,
     palabra varchar(15),
@@ -47,9 +132,6 @@ create table CrucigramaPalabra(
     constraint idActividad_CrucigramaPalabra_fk foreign key(idActividad) references Actividad (idActividad)
 );
 
-drop table jugar;
 create table jugar(
 	jugar boolean primary key
 );
-
-insert into jugar values (false);
