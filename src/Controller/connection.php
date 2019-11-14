@@ -10,14 +10,14 @@ class Conection
     function Conection()
     {
         $this->conn = null;
-        $this->pass = 'jueg8sPass';
-        $this->usu = 'jueg8s';
+        $this->pass = 'dbijnxyz_calidad';
+        $this->usu = 'Calidad2019.';
     }
 
     public function createConnection()
     {
         try {
-            $this->conn = new PDO('mysql:host=localhost;dbname=jueg8s', $this->usu, $this->pass);
+            $this->conn = new PDO('mysql:host=localhost;dbname=dbijnxyz_calidad', $this->usu, $this->pass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->conn;
         } catch (PDOException $exc) {
