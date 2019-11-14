@@ -1,5 +1,7 @@
 use jueg8s;
 -- Usuarios
+update grupo set activo = false where idGrupo > 0;
+select * from grupo;
 insert into grupo values (1,'Grupo 1',false),
 (2,'Grupo 2',false),
 (3,'Grupo 3',false),
@@ -22,8 +24,10 @@ insert into Lista values (1,'Valor 1',3,1),
 
 -- GrupoActividad
 delete from GrupoActividad where idGrupo != 5 and idActividad >0;
-insert into GrupoActividad values (5,1,0,curtime(),0);
-insert into GrupoActividad values (5,2,0,curtime(),0);
+-- insert into GrupoActividad values (5,1,0,curtime(),0);
+-- insert into GrupoActividad values (5,2,0,curtime(),0);
+select * from GrupoActividad;
+
 select * from GrupoActividad;
 
 -- Crucigrama
@@ -43,4 +47,9 @@ create table CrucigramaPalabra(
     constraint idActividad_CrucigramaPalabra_fk foreign key(idActividad) references Actividad (idActividad)
 );
 
+drop table jugar;
+create table jugar(
+	jugar boolean primary key
+);
 
+insert into jugar values (false);

@@ -34,7 +34,7 @@
                     ?>
         <div class="container" id="conte-1">
             <div class="form-group">
-                <form method="POST" action="/index.php" class="text-center p-5 m-4">
+                <form method="POST" action="http://<?php echo $session->getHost(); ?>/" class="text-center p-5 m-4">
                     <div class="logo-login"></div>
                     <br>
                     <p class="h4 mb-4">Juega ahora</p>

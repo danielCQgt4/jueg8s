@@ -2,7 +2,7 @@
 
 class Session
 {
-    private $host = '192.168.100.8';
+    private $host = 'localhost';
 
     function Session()
     {
@@ -23,6 +23,16 @@ class Session
     {
         $_SESSION['user'] = $usu;
         $_SESSION['pass'] = $pass;
+    }
+
+    public function setActive($status)
+    {
+        $_SESSION['Active'] = $status;
+    }
+
+    public function getActive()
+    {
+        return $_SESSION['active'];
     }
 
     public function setError($error)
