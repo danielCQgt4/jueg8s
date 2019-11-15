@@ -1,0 +1,57 @@
+<!-- Success message -->
+                    <?php if (!empty($_SESSION['success'])) { ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong><?php echo $session->getSuccess(); ?></strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span class="text-center" aria-hidden="true">&times;</span>
+                            </button>
+                        </div><?php
+                                }
+                                $session->setSuccess("");
+                                ?>
+                    <!-- Error message -->
+                    <?php if (!empty($_SESSION['error'])) { ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><?php echo $session->getError(); ?></strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div><?php
+                                }
+                                $session->setError("");
+                                ?>
+
+                                include './Recursos/Modelo/Conexion.php';
+        include './Recursos/Modelo/SessionUser.php';
+        include './Recursos/Controlador/LoginRUN.php';
+        $connection = new Conection();
+        $session = new Session();
+        $log = new Login();
+        $data = $_POST;
+
+        function accept() {
+            global $connection, $session;
+            if (!empty($_SESSION['user']) && !empty($_SESSION['pass'])) {
+                $connection->setUsu($session->getUser());
+                $connection->setPass($session->getPassword());
+                return $connection->getConexion();
+            } else {
+                return false;
+            }
+        }
+
+        function close() {
+            global $connection;
+            $connection = null;
+        }
+
+        if (accept()) {
+            switch ($log->getUserType($connection, $session)) {
+                case 'A':
+                    header('Location: ./principalAdmin.php');
+                    break;
+                case 'C':
+                    header('Location: ./principalCliente.php');
+                    break;
+            }
+        }

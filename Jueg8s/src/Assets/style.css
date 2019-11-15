@@ -1,0 +1,187 @@
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Login*/
+* {
+  font-family: serif;
+}
+
+html,
+body {
+  height: 100%;
+  color: white;
+  background: #780206;
+  background: -webkit-linear-gradient(to right, #061161, #780206);
+  background: linear-gradient(to right, #061161, #780206);
+}
+
+img {
+  max-width: 100%;
+}
+
+.no-border {
+  border: none;
+}
+
+#cover {
+  background: #222 url(../img/evergreen08.jpg) center center no-repeat;
+  background-size: cover;
+  color: greenyellow;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#cover-texto {
+  width: 100%;
+}
+
+#cover-texto .form-inline {
+  padding: 5rem 0;
+}
+
+.contenido-seccion {
+  padding: 5rem 0;
+  color: greenyellow;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#news {
+  background: url(../img/evergreen10.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+#text-promo {
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 1.87rem;
+}
+
+.login {
+  width: 30em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo-login {
+  background: url(../Imagenes/Logos/HatchfulExport-All2/youtube_profile_image.png)
+    no-repeat;
+  background-size: 85%;
+  background-position: center;
+  background-color: white;
+  width: 125px;
+  height: 125px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.social-media {
+  width: 100%;
+  height: 3em;
+}
+
+.social {
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+}
+
+.facebook-media {
+  background: url(../Imagenes/Redes/facebook.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.instagram-media {
+  background: url(../Imagenes/Redes/instagram.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.google-media {
+  background: url(../Imagenes/Redes/google-plus.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.twitter-media {
+  background: url(../Imagenes/Redes/twitter.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.error {
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  background-color: #ff7171;
+  /*border: 0.5px solid #ff2323;*/
+  color: red;
+}
+
+/* /////////////////////// Lista /////////////////////// */
+.list-box {
+  margin: 8em auto;
+  padding: 5em;
+  background-color: #22222277;
+  border-radius: 5px;
+}
+
+.list-title {
+  color: #fff;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.list-field {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  width: 25px;
+  text-align: center;
+}
+
+.list-field2 {
+  margin-top: 2px;
+  width: 25px;
+  text-align: center;
+}
+
+.lidt-table {
+  margin: 0 auto;
+}
+
+.list-row {
+}
+
+/* /////////////////////// Crucigrama /////////////////////// */
+.cru-field {
+  width: 51px;
+  height: 51px;
+}
+
+.cru-number {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.cru-table {
+  display: block;
+  width: max-content;
+}
+
+.cru-list {
+  display: inline;
+}
+
+.box-color {
+  padding: 5em;
+  background-color: #22222277;
+}
