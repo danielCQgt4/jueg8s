@@ -6,7 +6,7 @@ $session = new Session();
 $connection = new Conection();
 
 if (empty($_SESSION['user']) || empty($_SESSION['pass'])) {
-    header('Location: http://' . $session->getHost() . '/');
+    header('Location: ../../../');
 }
 ?>
 <!-- Diseno -->
@@ -15,7 +15,7 @@ if (empty($_SESSION['user']) || empty($_SESSION['pass'])) {
         <h1>Jueg8s</h1>
     </span>
 </nav>
-<form action="http://../../../" method="post" class="list-box">
+<form action="../../../" method="post" class="list-box">
     <!-- Success message -->
     <?php if (!empty($_SESSION['success'])) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">

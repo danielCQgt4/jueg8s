@@ -155,5 +155,5 @@ if ($admin) {
     }
 
     evaluarCrucigrama();
-    header('Location: ../Views/');
+    header('Location: /Jueg8s/src/Views/');
 }

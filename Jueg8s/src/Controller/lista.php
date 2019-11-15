@@ -53,4 +53,4 @@ try {
     $session->setError("No se pudo evaluar la lista - " . $sql . " /n" . $temp);
 }
 
-header('Location: ../Views/');
+header('Location: /Jueg8s/src/Views/');

@@ -1,98 +1,14 @@
-use jueg8s;
--- Usuarios
-update grupo
-set
-  activo = false
-where
-  idGrupo > 0;
-select
-  *
-from grupo;
-insert into grupo
-values
-  (1, 'Grupo 1', false),
-  (2, 'Grupo 2', false),
-  (3, 'Grupo 3', false),
-  (4, 'Grupo 4', false),
-  (5, 'Grupo 5', false),
-  (6, 'Grupo 6', false);
--- Actividad
-insert into Actividad
-values
-  (1, 'Lista ordenada');
-insert into Actividad
-values
-  (2, 'Crucigrama');
--- Lista
-delete from Lista
-where
-  idLista > 0;
-insert into Lista
-values
-  (
-    1,
-    'Completar al lista con los casos de prueba a evaluar',
-    3,
-    1
-  ),
-  (
-    2,
-    'Marcar el resultado de la prueba despues de ejecutarla',
-    4,
-    1
-  ),
-  (3, 'Completar los datos de creador de lista', 1, 1),
-  (4, 'Completar apartado de resultados', 6, 1),
-  (5, 'Pasar la lista al personal de testeo', 2, 1),
-  (6, 'Devolver la lista al creado', 5, 1);
--- GrupoActividad
-delete from GrupoActividad
-where
-  idGrupo != 5
-  and idActividad > 0;
--- insert into GrupoActividad values (5,1,0,curtime(),0);
-  -- insert into GrupoActividad values (5,2,0,curtime(),0);
-select
-  *
-from GrupoActividad;
-select
-  *
-from GrupoActividad;
--- Crucigrama
-  desc Crucigrama;
-update Crucigrama
-set
-  `6` = 4
-where
-  idCrucigrama = 5;
-select
-  *
-from Crucigrama;
-insert into CrucigramaPalabra value (1, 'CHECKLIST', 2),
-  (2, 'ELIMINAR', 2),
-  (3, 'FLEXIBLE', 2),
-  (4, 'SECUENCIA', 2),
-  (5, 'VERSATIL', 2);
--- Calificar
-update jugar
-set
-  jugar = true
-where
-  jugar = false;
-insert into jugar
-values
-  (false);
 -- SQL crate database
-  CREATE SCHEMA IF NOT EXISTS jueg8s DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA IF NOT EXISTS jueg8s DEFAULT CHARACTER SET utf8;
 USE jueg8s;
 
-drop table Lista;
-drop table Crucigrama;
-drop table CrucigramaPalabra;
-drop table Preguntas;
-drop table GrupoActividad;
-drop table Grupo;
-drop table Actividad;
+drop table if exists Lista;
+drop table if exists Crucigrama;
+drop table if exists CrucigramaPalabra;
+drop table if exists Preguntas;
+drop table if exists GrupoActividad;
+drop table if exists Grupo;
+drop table if exists Actividad;
 
 CREATE TABLE IF NOT EXISTS Grupo (
     idGrupo INT NOT NULL,
@@ -162,3 +78,48 @@ create table CrucigramaPalabra(
     constraint idActividad_CrucigramaPalabra_fk foreign key(idActividad) references Actividad (idActividad)
   );
 create table jugar(jugar boolean primary key);
+
+-- Usuarios
+update grupo set activo = false where idGrupo > 0;
+select * from grupo; 
+insert into grupo values
+  (1, 'Grupo 1', false),
+  (2, 'Grupo 2', false),
+  (3, 'Grupo 3', false),
+  (4, 'Grupo 4', false),
+  (5, 'Grupo 5', false),
+  (6, 'Grupo 6', false);
+  
+-- Actividad
+insert into Actividad values (1, 'Lista ordenada');
+insert into Actividad values (2, 'Crucigrama');
+
+-- Lista
+delete from Lista where idLista > 0;
+insert into Lista values (1,'Completar al lista con los casos de prueba a evaluar',3,1),
+  (2,'Marcar el resultado de la prueba despues de ejecutarla',4,1),
+  (3, 'Completar los datos de creador de lista', 1, 1),
+  (4, 'Completar apartado de resultados', 6, 1),
+  (5, 'Pasar la lista al personal de testeo', 2, 1),
+  (6, 'Devolver la lista al creado', 5, 1);
+  
+-- GrupoActividad
+delete from GrupoActividad where idGrupo != 5 and idActividad > 0;
+-- insert into GrupoActividad values (5,1,0,curtime(),0);
+-- insert into GrupoActividad values (5,2,0,curtime(),0);
+select * from GrupoActividad;
+select * from GrupoActividad;
+
+-- Crucigrama
+desc Crucigrama;
+select * from Crucigrama;
+insert into CrucigramaPalabra values 
+  (1, 'CHECKLIST', 2),
+  (2, 'ELIMINAR', 2),
+  (3, 'FLEXIBLE', 2),
+  (4, 'SECUENCIA', 2),
+  (5, 'VERSATIL', 2);
+  
+-- Calificar
+update jugar set jugar = true where jugar = false;
+insert into jugar values (false);
