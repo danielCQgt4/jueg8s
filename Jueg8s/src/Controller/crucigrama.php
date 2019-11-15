@@ -27,7 +27,7 @@ if ($admin) {
     }
 
     createCrucigrama();
-    header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/admin.php');
+    header('Location: ../Views/admin.php');
 } else {
 
     function getArregloFromData($data)
@@ -155,5 +155,5 @@ if ($admin) {
     }
 
     evaluarCrucigrama();
-    header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+    header('Location: ../Views/');
 }

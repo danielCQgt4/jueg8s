@@ -49,8 +49,8 @@
             if (this.readyState == 4 && this.status == 200) {
                 data = this.responseText;
                 console.log(window.location.href);
-                if (data == '{ "jugar":"1"}' && window.location.href == 'http://hotelevergreen.ddns.net/Jueg8s/src/Views/') {
-                    window.location.replace("http://hotelevergreen.ddns.net/Jueg8s/src/Views/resultados.php");
+                if (data == '{ "jugar":"1"}' && window.location.href == '/Jueg8s/src/Views/') {
+                    window.location.replace("/Jueg8s/src/Views/resultados.php");
                 }
             }
         };
@@ -76,7 +76,7 @@
                 }
             }
         };
-        xmlhttp.open("GET", "http://hotelevergreen.ddns.net/Jueg8s/src/Controller/general.php?api=123", true);
+        xmlhttp.open("GET", "/Jueg8s/src/Controller/general.php?api=123", true);
         xmlhttp.send();
     }
     setInterval(getData, 2000);

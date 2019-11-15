@@ -1,6 +1,6 @@
 <div class="container">
     <div class="list-box">
-        <form id="list-form" method="POST" action="http://<?php echo $session->getHost() . '/'; ?>">
+        <form id="list-form" method="POST" action="../../../">
             <!-- Success message -->
             <?php if (!empty($_SESSION['success'])) { ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

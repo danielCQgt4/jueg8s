@@ -1,8 +1,8 @@
 <?php
-include './src/Models/sessionUser.php';
-include './src/external.html';
-include './src/Controller/connection.php';
-include './src/Controller/general.php';
+include './Jueg8s/src/Models/sessionUser.php';
+include './Jueg8s/src/external.html';
+include './Jueg8s/src/Controller/connection.php';
+include './Jueg8s/src/Controller/general.php';
 $session = new Session();
 $connection = new Conection();
 $data = $_POST;
@@ -11,13 +11,13 @@ if (isset($data['start'])) {
     $session->setUser($data['pass'], $data['idGroup']);
     if (accept($session->getUser(), $session->getPassword())) {
         if ($data['idGroup'] == 5) {
-            header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/admin.php');
+            header('Location: ./Jueg8s/src/Views/admin.php');
         } else {
-            header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+            header('Location: ./Jueg8s/src/Views/');
         }
     } else {
         $session->setError('Sin acceso');
-        header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+        header('Location: ./Jueg8s/src/Views/');
     }
 } else if (isset($data['evaluate-list'])) {
     include './Jueg8s/src/Controller/lista.php';
@@ -28,7 +28,7 @@ if (isset($data['start'])) {
     $admin = false;
     include './Jueg8s/src/Controller/crucigrama.php';
 } else if (isset($data['btn-evaluate'])) {
-    header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/resultados.php');
+    header('Location: ./Jueg8s/src/Views/resultados.php');
 } else {
-    header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+    header('Location: ./Jueg8s/src/Views/');
 }

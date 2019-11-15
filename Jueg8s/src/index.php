@@ -7,9 +7,9 @@ $connection = new Conection();
 
 if (!empty($_SESSION['user']) && !empty($_SESSION['pass'])) {
     if ($session->getUser() == 5) {
-        header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/admin.php');
+        header('Location: ./Views/admin.php');
     } else {
-        header('Location: http://' . $session->getHost() . '/Jueg8s/src/Views/');
+        header('Location: ./Views/');
     }
 }
 
